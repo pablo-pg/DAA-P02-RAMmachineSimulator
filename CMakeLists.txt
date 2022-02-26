@@ -1,10 +1,10 @@
 # Universidad de La Laguna
 # Escuela Superior de Ingeniería y Tecnología
 # Grado en Ingeniería Informática
-# Asignatura                                                                   # CHANGE
+# Asignatura Diseño y Análisis de Algoritmos
 #
 # @author Pablo Pérez González
-# @date Enero 2022
+# @date Febrero 2022
 # @brief General CMakeLists.txt
 #
 # Build process:
@@ -18,9 +18,9 @@
 cmake_minimum_required(VERSION 3.1)  # Mandatory
 
 # set the project name 
-project(MyVector                # Mandatory                                    # CHANGE
+project(RAMMachineSimulator
     VERSION 1.0
-    DESCRIPTION "My Vector class"                                              # CHANGE
+    DESCRIPTION "A simulator of a RAM Machine"
     LANGUAGES CXX)
 
 # specify the C++ standard
