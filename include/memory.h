@@ -12,15 +12,15 @@
 #ifndef MEMORY_H_
 #define MEMORY_H_
 
-#include <sstream>
+#include <fstream>
 #include <string>
 #include <vector>
 
 struct Memory {
   unsigned int program_counter = 0;
   std::vector<int> registers;
-  std::stringstream input;
-  std::stringstream output;
+  std::fstream input;
+  std::fstream output;
 };
 
 

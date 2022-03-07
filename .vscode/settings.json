@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.pl": "prolog",
     "array": "cpp",
     "atomic": "cpp",
     "bit": "cpp",
@@ -44,6 +45,13 @@
     "sstream": "cpp",
     "stdexcept": "cpp",
     "streambuf": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "cstring": "cpp",
+    "ctime": "cpp",
+    "any": "cpp",
+    "set": "cpp",
+    "iomanip": "cpp",
+    "cinttypes": "cpp",
+    "variant": "cpp"
   }
 }

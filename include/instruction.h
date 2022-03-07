@@ -13,41 +13,153 @@
 #define INSTRUCTION_H_
 
 #include <string>
-#include "include/memory.h"
+#include <fstream>
+#include "./macros.h"
+#include "./memory.h"
 
-const std::string NUMBER_OPERAND_CHAR = "=";
-const std::string INDIRECT_OPERAND_CHAR = "*";
-
-enum opType {number, label};
-
-struct Operand {
-  opType type;
+class InvalidInstruction: public std::exception {
+ protected:
+  mutable std::string message;
+ public:
+  explicit InvalidInstruction(const std::string& s);
 };
 
-struct number : Operand {
-  opType type = opType::number;
-  double value;
+class InvalidMode: public InvalidInstruction {
+  using InvalidInstruction::InvalidInstruction;
+ public:
+  const char* what() const noexcept;
 };
 
-struct label : Operand {
-  opType type = opType::label;
-  std::string value;
+class InvalidStore: public InvalidInstruction {
+  using InvalidInstruction::InvalidInstruction;
+ public:
+  const char* what() const noexcept;
+};
+
+class InvalidRead: public InvalidInstruction {
+  using InvalidInstruction::InvalidInstruction;
+ public:
+  const char* what() const noexcept;
+};
+
+class InvalidInput: public InvalidInstruction {
+  using InvalidInstruction::InvalidInstruction;
+ public:
+  const char* what() const noexcept;
+};
+
+class InvalidWrite: public InvalidInstruction {
+  using InvalidInstruction::InvalidInstruction;
+ public:
+  const char* what() const noexcept;
+};
+
+class DivisionByZero: public InvalidInstruction {
+  using InvalidInstruction::InvalidInstruction;
+ public:
+  const char* what() const noexcept;
+};
+
+class ExecutionEnd: public std::exception {
+ public:
+  const char* what() const noexcept;
 };
 
 
-enum Mode {
-  inmediate, direct, indirect, label
-};
+std::string mode_to_string();
 
 class Instruction {
- public:
-  Instruction();
-  ~Instruction();
-  virtual void execute(Memory&) const;
  protected:
+  int operand;
   Mode mode;
-  Operand* operand;
-
+ public:
+  Instruction(int operand, Mode mode);
+  virtual ~Instruction() = default;
+  virtual void execute(Memory& mem) const = 0;
+  virtual std::string to_string() const = 0;
 };
 
+class LoadInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class StoreInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class AddInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class SubInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class MultInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class DivInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class ReadInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class WriteInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class JumpInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class JGTZInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class JZeroInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+class HaltInstruction : public Instruction {
+ public:
+  // using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
 #endif  // INSTRUCTION_H_
