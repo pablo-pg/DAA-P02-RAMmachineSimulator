@@ -281,7 +281,6 @@ void ReadInstruction::execute(Memory& mem) const {
   default:
     throw InvalidMode(to_string());
   }
-  // std::cout << "Registro[" << operand << "]:" << mem.registers[operand] << std::endl;
   mem.program_counter += 1;
 }
 

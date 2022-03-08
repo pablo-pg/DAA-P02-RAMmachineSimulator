@@ -12,9 +12,6 @@
 #ifndef RAM_H_
 #define RAM_H_
 
-// #include <iostream>
-// #include <chrono>
-// #include <thread>
 #include <vector>
 #include "./memory.h"
 #include "./instruction.h"
@@ -23,7 +20,6 @@ class RAM {
  public:
   RAM(const std::vector<Instruction*>& instructions,
   std::fstream& input , std::fstream& output);
-  // virtual ~RAM();
   ~RAM();
   int execute();
   const std::vector<Instruction*>& getInstructions() const;

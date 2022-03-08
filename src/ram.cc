@@ -30,11 +30,8 @@ RAM::~RAM() {
 
 int RAM::execute() {
   try {
-    // std::cout << instructions[0]->to_string() << std::endl;
     while (true) {
       instructions[memory.program_counter]->execute(memory);
-      // std::cout << memory.program_counter << " " << instructions[memory.program_counter]->to_string() << " - hechita" << std::endl;
-      // std::this_thread::sleep_for(std::chrono::milliseconds(50));
       instructions_executed++;
     }
   } catch(ExecutionEnd& e) {}

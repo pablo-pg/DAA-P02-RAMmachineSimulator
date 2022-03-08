@@ -28,10 +28,14 @@
 #define JGTZ_INSTRUCTION_ID std::string("jgtz")
 #define JZERO_INSTRUCTION_ID std::string("jzero")
 #define HALT_INSTRUCTION_ID std::string("halt")
+
+
 #define INMEDIATE_MODE_SYMBOL "="
 #define INDIRECT_MODE_SYMBOL "*"
 #define LABEL_SYMBOL ":"
 #define COMMENT_SYMBOL "#"
+
+
 #define ACCUMULATOR_REG 0
 
 enum Mode { inmediate, direct, indirect, label, halt };
