@@ -20,7 +20,7 @@
 #define STORE_INSTRUCTION_ID std::string("store")
 #define ADD_INSTRUCTION_ID std::string("add")
 #define SUB_INSTRUCTION_ID std::string("sub")
-#define MULT_INSTRUCTION_ID std::string("mult")
+#define MULT_INSTRUCTION_ID std::string("mul")
 #define DIV_INSTRUCTION_ID std::string("div")
 #define READ_INSTRUCTION_ID std::string("read")
 #define WRITE_INSTRUCTION_ID std::string("write")
