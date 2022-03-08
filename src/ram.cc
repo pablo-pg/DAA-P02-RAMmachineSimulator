@@ -13,30 +13,30 @@
 #include "../include/ram.h"
 
 RAM::RAM(const std::vector<Instruction*>& instructions,
-  std::fstream& input, std::fstream& output) {
-    this->instructions = instructions;
-    memory.input.swap(input);
-    memory.output.swap(output);
-    memory.program_counter = 0;
-    instructions_executed = 0;
+ std::fstream& input, std::fstream& output) {
+  this->instructions = instructions;
+  memory.input.swap(input);
+  memory.output.swap(output);
+  memory.program_counter = 0;
+  instructions_executed = 0;
 }
 
 RAM::~RAM() {
-  for (Instruction* instruction : instructions) {
-    delete instruction;
-  }
+ for (Instruction* instruction : instructions) {
+  delete instruction;
+ }
 }
 
 int RAM::execute() {
-  try {
-    while (true) {
-      instructions[memory.program_counter]->execute(memory);
-      instructions_executed++;
-    }
-  } catch(ExecutionEnd& e) {}
-  return instructions_executed;
+ try {
+  while (true) {
+   instructions[memory.program_counter]->execute(memory);
+   instructions_executed++;
+  }
+ } catch(ExecutionEnd& e) {}
+ return instructions_executed;
 }
 
 const std::vector<Instruction*>& RAM::getInstructions() const {
-  return instructions;
+ return instructions;
 }

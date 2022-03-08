@@ -1,6 +1,6 @@
 
 CXX		  := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb -Wno-return-type
+CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb -Wno-return-type -Wswitch
 
 BIN		:= bin
 SRC		:= src

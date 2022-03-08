@@ -18,18 +18,18 @@
 
 class RAM {
  public:
-  RAM(const std::vector<Instruction*>& instructions,
-    std::fstream& input , std::fstream& output);
-  // virtual ~RAM();
-  ~RAM();
-  int execute();
-  const std::vector<Instruction*>& getInstructions() const;
+ RAM(const std::vector<Instruction*>& instructions,
+  std::fstream& input , std::fstream& output);
+ // virtual ~RAM();
+ ~RAM();
+ int execute();
+ const std::vector<Instruction*>& getInstructions() const;
 
  protected:
-  int instructions_executed;
-  Memory memory;
-  std::vector<Instruction*> instructions;
+ int instructions_executed;
+ Memory memory;
+ std::vector<Instruction*> instructions;
 };
 
 
-#endif  // RAM_H_
+#endif // RAM_H_
