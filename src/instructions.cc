@@ -234,6 +234,7 @@ int read_number(std::fstream& input) {
   std::string number_str;
   std::getline(input, number_str);
   int number;
+  // std::cout << "entrada: " << number_str << std::endl;
   try {
     number = std::stoi(number_str);
   } catch(std::exception& e) {
@@ -256,6 +257,7 @@ void ReadInstruction::execute(Memory& mem) const {
   default:
     throw InvalidMode(to_string());
   }
+  // std::cout << "Registro[" << operand << "]:" << mem.registers[operand] << std::endl;
   mem.program_counter += 1;
 }
 

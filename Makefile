@@ -8,6 +8,7 @@ INCLUDE	:= include
 
 LIBRARIES	:= lib
 EXECUTABLE	:= simulador
+ARGS  := test/ejemplosRAM/test1.ram test/cinta.in salida.out
 
 
 all: $(BIN)/$(EXECUTABLE)
@@ -17,7 +18,7 @@ $(BIN)/$(EXECUTABLE): $(SRC)/*.cc
 
 run: clean all
 	clear
-	./$(BIN)/$(EXECUTABLE)
+	./$(BIN)/$(EXECUTABLE) $(ARGS)
 
 clean:
 	-rm $(BIN)/simulador

@@ -141,6 +141,7 @@ int parse_label(std::string label,
   if (key_value_iter == labels.end()) {
     throw InvalidLabel(label);
   }
+  // std::cout << key_value_iter->second << std::endl;
   return std::get<int>(*key_value_iter);
 }
 
@@ -197,8 +198,7 @@ Instruction* parse_instruction(std::string line,
 }
 
 std::vector<Instruction*> parse_instructions(std::vector<std::string>& lines,
-                                             std::unordered_map<std::string,
-                                             int>& labels) {
+                                             std::unordered_map<std::string, int>& labels) {
   std::vector<Instruction*> instructions;
   for (const std::string& s : lines) {
     instructions.push_back(parse_instruction(s, labels));
@@ -226,7 +226,8 @@ RAM* RAMBuilder::build() {
   output_set = false;
   RAM* ram = new RAM(instructions, input, output);
   instructions_set = false;
-  instructions = std::vector<Instruction*>();
+  // instructions = std::vector<Instruction*>();
+  // std::cout << "TEST " << instructions[0]->to_string() << std::endl;
   return ram;
 }
 

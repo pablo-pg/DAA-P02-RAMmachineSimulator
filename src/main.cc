@@ -24,18 +24,19 @@
 #include "../include/ram_generator.h"
 
 void show_usage() {
- std::cout << "Usage:\n"
+  std::cout << "Usage:\n"
       << "./ram_sim ram_program.ram input_tape.in output_tape.out\n"
       << "Debug is optional and activates debug mode" << std::endl;
 }
 
 int main(int argc, char** argv) {
-  if (std::string(argv[1]) == "-h") {
+  if (argc == 2 && std::string(argv[1]) == "-h") {
     show_usage();
     return 0;
   }
   if (argc < 4) {
-    std::cout << "Invalid number of arguments. Use -h to see the help";
+    std::cout << "Invalid number of arguments. Use -h to see the help"
+              << std::endl;
     return 1;
   }
   std::fstream instructions_file(argv[1], std::ios::in);

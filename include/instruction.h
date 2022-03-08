@@ -12,6 +12,7 @@
 #ifndef INSTRUCTION_H_
 #define INSTRUCTION_H_
 
+// #include <iostream>
 #include <string>
 #include <fstream>
 #include "./macros.h"

@@ -12,7 +12,7 @@
 #ifndef RAM_GENERATOR_H_
 #define RAM_GENERATOR_H_
 
-
+// #include <iostream>
 #include <algorithm>
 #include <cctype>
 #include <fstream>

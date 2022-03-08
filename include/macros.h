@@ -31,7 +31,7 @@
 #define INMEDIATE_MODE_SYMBOL "="
 #define INDIRECT_MODE_SYMBOL "*"
 #define LABEL_SYMBOL ":"
-#define COMMENT_SYMBOL ";"
+#define COMMENT_SYMBOL "#"
 #define ACCUMULATOR_REG 0
 
 enum Mode { inmediate, direct, indirect, label, halt };
