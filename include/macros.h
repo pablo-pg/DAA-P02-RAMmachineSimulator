@@ -28,6 +28,8 @@
 #define JGTZ_INSTRUCTION_ID std::string("jgtz")
 #define JZERO_INSTRUCTION_ID std::string("jzero")
 #define HALT_INSTRUCTION_ID std::string("halt")
+// modi
+#define JPAR_INSTRUCTION_ID std::string("jpar")
 
 
 #define INMEDIATE_MODE_SYMBOL "="

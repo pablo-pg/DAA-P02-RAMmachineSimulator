@@ -190,6 +190,9 @@ Instruction* parse_instruction(std::string line,
   } else if (line.find(JZERO_INSTRUCTION_ID) == 0) {
     operand = parse_label(line.substr(JZERO_INSTRUCTION_ID.size()), labels);
     return new JZeroInstruction(operand, Mode::label);
+  } else if (line.find(JPAR_INSTRUCTION_ID) == 0) {               //////////////< MODI
+    operand = parse_label(line.substr(JPAR_INSTRUCTION_ID.size()), labels);
+    return new JParInstruction(operand, Mode::label);
   } else if (line.find(HALT_INSTRUCTION_ID) == 0) {
     return new HaltInstruction(0, Mode::halt);
   } else {

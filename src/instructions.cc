@@ -265,6 +265,7 @@ int read_number(std::fstream& input) {
 }
 
 void ReadInstruction::execute(Memory& mem) const {
+  std::cout << mem.program_counter << std::endl;
   switch (mode) {
   case Mode::inmediate:
     throw InvalidRead(to_string());
@@ -359,6 +360,22 @@ void JZeroInstruction::execute(Memory& mem) const {
 
 std::string JZeroInstruction::to_string() const {
   return JZERO_INSTRUCTION_ID + std::string(" ") + std::to_string(operand);
+}
+
+void JParInstruction::execute(Memory& mem) const {
+  if (mode == Mode::label) {
+    if (mem.registers[ACCUMULATOR_REG] % 2 == 0) {
+      mem.program_counter = operand;
+    } else {
+      mem.program_counter += 1;
+    }
+  } else {
+    throw InvalidMode(to_string());
+  }
+}
+
+std::string JParInstruction::to_string() const {
+  return JPAR_INSTRUCTION_ID + std::string(" ") + std::to_string(operand);
 }
 
 void HaltInstruction::execute(Memory& mem) const {

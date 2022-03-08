@@ -1,0 +1,15 @@
+# Diseñe un programa con el repertorio de instrucciones de una máquina RAM que
+# lea los valores de la cinta de entrada y los multiplique hasta encontrar un 0.
+# Sólo deberá multiplicar aquellos valores que sean pares.
+
+bucle:	READ 1
+				LOAD 1
+                JPAR par
+sigue:  STORE 1
+				WRITE 1
+				JZERO fin
+				JUMP bucle
+par:    LOAD 1
+                MUL =2
+                JUMP sigue
+fin:		HALT

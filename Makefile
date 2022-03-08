@@ -1,6 +1,6 @@
 
 CXX		  := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb -Wno-return-type -Wswitch
+CXX_FLAGS := -Wswitch -Wall -Wextra -std=c++17 -ggdb -Wno-return-type
 
 BIN		:= bin
 SRC		:= src
@@ -8,7 +8,7 @@ INCLUDE	:= include
 
 LIBRARIES	:= lib
 EXECUTABLE	:= simulador
-ARGS  := test/cinta.in test/salida.out
+ARGS  := test/cinta.in test/salida.out 
 
 
 all: $(BIN)/$(EXECUTABLE)
@@ -38,6 +38,10 @@ six:
 
 seven:
 	./$(BIN)/$(EXECUTABLE) test/ejemplosRAM/test7.ram $(ARGS)
+
+modi:
+	./$(BIN)/$(EXECUTABLE) test/ejemplosRAM/modificacion.ram $(ARGS)
+
 
 clean:
 	-rm $(BIN)/simulador

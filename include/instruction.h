@@ -12,6 +12,7 @@
 #ifndef INSTRUCTION_H_
 #define INSTRUCTION_H_
 
+#include <iostream>
 #include <string>
 #include <fstream>
 #include "./macros.h"
@@ -150,6 +151,14 @@ class JGTZInstruction : public Instruction {
 };
 
 class JZeroInstruction : public Instruction {
+ public:
+  using Instruction::Instruction;
+  void execute(Memory& mem) const;
+  std::string to_string() const;
+};
+
+/****************** modi *******************/
+class JParInstruction : public Instruction {
  public:
   using Instruction::Instruction;
   void execute(Memory& mem) const;
