@@ -78,10 +78,16 @@ void LoadInstruction::execute(Memory& mem) const {
     mem.registers[ACCUMULATOR_REG] = operand;
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     value = mem.registers[operand];
     mem.registers[ACCUMULATOR_REG] = value;
     break;
   case Mode::indirect:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     value = mem.registers[mem.registers[operand]];
     mem.registers[ACCUMULATOR_REG] = value;
     break;
@@ -103,6 +109,9 @@ void StoreInstruction::execute(Memory& mem) const {
     throw InvalidStore(to_string());
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     value = mem.registers[ACCUMULATOR_REG];
     mem.registers[operand] = value;
     break;
@@ -128,6 +137,9 @@ void AddInstruction::execute(Memory& mem) const {
     mem.registers[ACCUMULATOR_REG] += operand;
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     value = mem.registers[operand];
     mem.registers[ACCUMULATOR_REG] += value;
     break;
@@ -153,6 +165,9 @@ void SubInstruction::execute(Memory& mem) const {
     mem.registers[ACCUMULATOR_REG] -= operand;
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     value = mem.registers[operand];
     mem.registers[ACCUMULATOR_REG] -= value;
     break;
@@ -178,6 +193,9 @@ void MultInstruction::execute(Memory& mem) const {
     mem.registers[ACCUMULATOR_REG] *= operand;
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     value = mem.registers[operand];
     mem.registers[ACCUMULATOR_REG] *= value;
     break;
@@ -206,6 +224,9 @@ void DivInstruction::execute(Memory& mem) const {
     mem.registers[ACCUMULATOR_REG] /= operand;
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     if (mem.registers[operand] == 0) {
       throw DivisionByZero(to_string());
     }
@@ -249,6 +270,9 @@ void ReadInstruction::execute(Memory& mem) const {
     throw InvalidRead(to_string());
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     mem.registers[operand] = read_number(mem.input);
     break;
   case Mode::indirect:
@@ -272,6 +296,9 @@ void WriteInstruction::execute(Memory& mem) const {
     mem.output << operand << "\n";
     break;
   case Mode::direct:
+    if (operand >= mem.registers.size()) {
+      mem.registers.resize(mem.registers.size() + 1);
+    }
     if (operand == ACCUMULATOR_REG) {
       throw InvalidWrite(to_string());
     }

@@ -224,10 +224,9 @@ RAM* RAMBuilder::build() {
   }
   input_set = false;
   output_set = false;
-  RAM* ram = new RAM(instructions, input, output);
   instructions_set = false;
-  // instructions = std::vector<Instruction*>();
-  // std::cout << "TEST " << instructions[0]->to_string() << std::endl;
+  RAM* ram = new RAM(instructions, input, output);
+
   return ram;
 }
 
