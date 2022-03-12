@@ -19,7 +19,7 @@
 class RAM {
  public:
   RAM(const std::vector<Instruction*>& instructions,
-  std::fstream& input , std::fstream& output);
+    std::fstream& input, std::fstream& output, int debug);
   ~RAM();
   int execute();
   const std::vector<Instruction*>& getInstructions() const;

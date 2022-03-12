@@ -13,7 +13,7 @@
 #include "../include/ram.h"
 
 RAM::RAM(const std::vector<Instruction*>& instructions,
- std::fstream& input, std::fstream& output) {
+ std::fstream& input, std::fstream& output, int debug_mode) {
   this->instructions = instructions;
   memory.input.swap(input);
   memory.output.swap(output);

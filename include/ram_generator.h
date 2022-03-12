@@ -83,6 +83,10 @@ class InvalidDebug: public std::exception {
   const char* what() const noexcept;
 };
 
+class DebugNoSet: public std::exception {
+ public:
+  const char* what() const noexcept;
+};
 
 // using lines_vec = std::vector<std::string>;
 // using labels = std::unordered_map<std::string, int>;
@@ -101,6 +105,7 @@ class RAMBuilder {
   bool input_set;
   bool output_set;
   bool instructions_set;
+  bool debug_set;
   int debug;
   std::vector<Instruction*> instructions;
   std::fstream input;

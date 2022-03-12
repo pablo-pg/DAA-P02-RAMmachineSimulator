@@ -59,6 +59,10 @@ const char* InvalidDebug::what() const noexcept {
   return "The debug mode is invalid";
 }
 
+const char* DebugNoSet::what() const noexcept {
+  return "Debug mode wasn't set";
+}
+
 RAMBuilder::RAMBuilder() {
   input_set = false;
   output_set = false;
@@ -227,11 +231,13 @@ RAM* RAMBuilder::build() {
     throw OutputNotSet();
   } else if (!instructions_set) {
     throw InstructionsNotSet();
+  } else if (!debug_set) {
+    throw DebugNoSet();
   }
   input_set = false;
   output_set = false;
   instructions_set = false;
-  RAM* ram = new RAM(instructions, input, output);
+  RAM* ram = new RAM(instructions, input, output, debug);
 
   return ram;
 }
@@ -266,6 +272,7 @@ void RAMBuilder::set_output_stream(std::fstream& output) {
 void RAMBuilder::set_debug(int debug_mode) {
   if ((debug_mode == 0) || (debug_mode == 1) || (debug_mode == 2)) {
     debug = debug_mode;
+    debug_set = true;
   } else {
     throw InvalidDebug();
   }
