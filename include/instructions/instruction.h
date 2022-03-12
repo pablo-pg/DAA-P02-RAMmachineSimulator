@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef INSTRUCTION_H_
-#define INSTRUCTION_H_
+#ifndef INSTRUCTIONS_INSTRUCTION_H_
+#define INSTRUCTIONS_INSTRUCTION_H_
 
 #include <iostream>
 #include <string>
@@ -40,4 +40,4 @@ class Instruction {
 };
 
 
-#endif  // INSTRUCTION_H_
+#endif  // INSTRUCTIONS_INSTRUCTION_H_
