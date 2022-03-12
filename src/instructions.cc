@@ -9,7 +9,7 @@
  * 
  */
 
-#include "../include/instruction.h"
+#include "../include/instructions/include_instr.h"
 
 InvalidInstruction::InvalidInstruction(const std::string& s) {
   message = s;
@@ -268,7 +268,6 @@ int read_number(std::fstream& input) {
 }
 
 void ReadInstruction::execute(Memory& mem) const {
-  std::cout << mem.program_counter << std::endl;
   switch (mode) {
   case Mode::inmediate:
     throw InvalidRead(to_string());

@@ -14,7 +14,7 @@
 
 #include <vector>
 #include "./memory.h"
-#include "./instruction.h"
+#include "./instructions/include_instr.h"
 
 class RAM {
  public:

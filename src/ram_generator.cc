@@ -141,7 +141,6 @@ int parse_label(std::string label,
   if (key_value_iter == labels.end()) {
     throw InvalidLabel(label);
   }
-  // std::cout << key_value_iter->second << std::endl;
   return std::get<int>(*key_value_iter);
 }
 
