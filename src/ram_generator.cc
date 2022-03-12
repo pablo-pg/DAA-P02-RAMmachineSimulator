@@ -55,6 +55,10 @@ const char* InvalidOperand::what() const noexcept {
   return message.c_str();
 }
 
+const char* InvalidDebug::what() const noexcept {
+  return "The debug mode is invalid";
+}
+
 RAMBuilder::RAMBuilder() {
   input_set = false;
   output_set = false;
@@ -257,6 +261,18 @@ void RAMBuilder::set_output_stream(std::fstream& output) {
     this->output.swap(output);
     output_set = true;
   }
+}
+
+void RAMBuilder::set_debug(int debug_mode) {
+  if ((debug_mode == 0) || (debug_mode == 1) || (debug_mode == 2)) {
+    debug = debug_mode;
+  } else {
+    throw InvalidDebug();
+  }
+}
+
+int RAMBuilder::get_debug() const {
+  return debug;
 }
 
 

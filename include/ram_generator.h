@@ -78,6 +78,11 @@ class InvalidOperand: public InvalidInstructionPart {
   const char* what() const noexcept;
 };
 
+class InvalidDebug: public std::exception {
+ public:
+  const char* what() const noexcept;
+};
+
 
 // using lines_vec = std::vector<std::string>;
 // using labels = std::unordered_map<std::string, int>;
@@ -89,11 +94,14 @@ class RAMBuilder {
   void read_instructions_from(std::fstream& input);
   void set_input_stream(std::fstream& input);
   void set_output_stream(std::fstream& input);
+  void set_debug(int debug_mode);
+  int get_debug() const;
 
  private:
   bool input_set;
   bool output_set;
   bool instructions_set;
+  int debug;
   std::vector<Instruction*> instructions;
   std::fstream input;
   std::fstream output;

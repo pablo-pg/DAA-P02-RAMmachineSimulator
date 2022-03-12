@@ -8,7 +8,7 @@ INCLUDE	:= include
 
 LIBRARIES	:= lib
 EXECUTABLE	:= simulador
-ARGS  := test/cinta.in test/salida.out 
+ARGS  := test/cinta.in test/salida.out 1
 
 
 all: $(BIN)/$(EXECUTABLE)

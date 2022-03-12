@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     show_usage();
     return 0;
   }
-  if (argc < 4) {
+  if (argc < 5) {
     std::cout << "Invalid number of arguments. Use -h to see the help"
               << std::endl;
     return 1;
@@ -51,11 +51,14 @@ int main(int argc, char** argv) {
   }
   builder.set_input_stream(input_file);
   builder.set_output_stream(output_file);
+  builder.set_debug(std::stoi(std::string(argv[4])));
   RAM* ram;
   ram = builder.build();
   try {
     int instructions_executed = ram->execute();
-    std::cout << "Execution finished succesfully after " << instructions_executed << " instructions\n";
+    if (builder.get_debug() == 1 || builder.get_debug() == 2) {
+      std::cout << "Execution finished succesfully after " << instructions_executed << " instructions\n";
+    }
   } catch(std::exception& e) {
     std::cout << "An error ocurred during the execution: " << e.what() << "\n";
   }
