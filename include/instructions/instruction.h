@@ -26,7 +26,7 @@ class ExecutionEnd: public std::exception {
 };
 
 
-std::string mode_to_string();
+std::string mode_to_string(Mode);
 
 class Instruction {
  protected:

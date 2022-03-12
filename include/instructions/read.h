@@ -13,7 +13,10 @@
 
 #include <string>
 #include "./instruction.h"
+#include "./instr_exceptions.h"
 #include "../memory.h"
+
+int read_number(std::fstream& input);
 
 class ReadInstruction : public Instruction {
  public:

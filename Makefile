@@ -13,7 +13,7 @@ ARGS  := test/cinta.in test/salida.out
 
 all: $(BIN)/$(EXECUTABLE)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cc
+$(BIN)/$(EXECUTABLE): $(SRC)/*.cc $(SRC)/instructions/*.cc
 	$(CXX) $(CXX_FLAGS) -I $(INCLUDE) $^ -o $@ -L $(LIBRARIES)
 
 build: clean all

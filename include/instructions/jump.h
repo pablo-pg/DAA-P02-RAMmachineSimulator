@@ -13,6 +13,7 @@
 
 #include <string>
 #include "./instruction.h"
+#include "./instr_exceptions.h"
 #include "../memory.h"
 
 class JumpInstruction : public Instruction {
