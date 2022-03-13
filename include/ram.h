@@ -26,6 +26,7 @@ class RAM {
 
  protected:
   int instructions_executed;
+  bool debug;
   Memory memory;
   std::vector<Instruction*> instructions;
 };

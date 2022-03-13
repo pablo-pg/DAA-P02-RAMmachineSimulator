@@ -14,7 +14,7 @@
 #include <string>
 #include "./instruction.h"
 #include "./instr_exceptions.h"
-#include "../memory.h"
+// #include "../memory.h"
 
 int read_number(std::fstream& input);
 
