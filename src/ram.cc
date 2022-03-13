@@ -19,16 +19,14 @@ RAM::RAM(const std::vector<Instruction*>& instructions,
   memory.output.swap(output);
   memory.program_counter = 0;
   instructions_executed = 0;
-  memory.registers.resize(10);
+  memory.registers.resize(1);
   if (debug_mode == 2) {
     debug = true;
   }
 }
 
 RAM::~RAM() {
-  for (Instruction* instruction : instructions) {
-    delete instruction;
-  }
+  instructions.resize(0);
 }
 
 int RAM::execute() {
