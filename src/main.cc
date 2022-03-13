@@ -25,8 +25,8 @@
 
 void show_usage() {
   std::cout << "Usage:\n"
-      << "./ram_sim ram_program.ram input_tape.in output_tape.out\n"
-      << "Debug is optional and activates debug mode" << std::endl;
+      << "./ram_sim ram_program.ram input_tape.in output_tape.out debug\n"
+      << "Debug activates debug mode if is 1 or 2" << std::endl;
 }
 
 int main(int argc, char** argv) {
@@ -42,6 +42,12 @@ int main(int argc, char** argv) {
   std::fstream instructions_file(argv[1], std::ios::in);
   std::fstream input_file(argv[2], std::ios::in);
   std::fstream output_file(argv[3], std::ios::out | std::ios::trunc | std::ios::in);
+  std::fstream input_file_copy(argv[2], std::ios::in);
+  std::vector<std::string> input;
+  std::string line;
+  while (std::getline(input_file_copy, line)) {
+    input.push_back(line);
+  }
   RAMBuilder builder;
   try {
     builder.read_instructions_from(instructions_file);
@@ -53,7 +59,7 @@ int main(int argc, char** argv) {
   builder.set_output_stream(output_file);
   builder.set_debug(std::stoi(std::string(argv[4])));
   RAM* ram;
-  ram = builder.build();
+  ram = builder.build(input);
   try {
     int instructions_executed = ram->execute();
     if (builder.get_debug() == 1 || builder.get_debug() == 2) {

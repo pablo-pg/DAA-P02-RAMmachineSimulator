@@ -13,13 +13,14 @@
 #define RAM_H_
 
 #include <vector>
-#include "./memory.h"
 #include "./instructions/include_instr.h"
+#include "./memory.h"
 
 class RAM {
  public:
   RAM(const std::vector<Instruction*>& instructions,
-    std::fstream& input, std::fstream& output, int debug);
+    std::fstream& input, std::fstream& output, int debug, 
+    std::vector<std::string> str_input);
   ~RAM();
   int execute();
   const std::vector<Instruction*>& getInstructions() const;
@@ -28,6 +29,8 @@ class RAM {
   int instructions_executed;
   bool debug;
   Memory memory;
+  std::vector<std::string> str_input;
+  std::vector<std::string> str_output;
   std::vector<Instruction*> instructions;
 };
 

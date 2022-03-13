@@ -224,7 +224,7 @@ std::vector<Instruction*> get_instructions_from_file(std::fstream& input) {
   return parse_instructions(lines, labels);
 }
 
-RAM* RAMBuilder::build() {
+RAM* RAMBuilder::build(std::vector<std::string> str_input) {
   if (!input_set) {
     throw InputNotSet();
   } else if (!output_set) {
@@ -237,7 +237,7 @@ RAM* RAMBuilder::build() {
   input_set = false;
   output_set = false;
   instructions_set = false;
-  RAM* ram = new RAM(instructions, input, output, debug);
+  RAM* ram = new RAM(instructions, input, output, debug, str_input);
 
   return ram;
 }

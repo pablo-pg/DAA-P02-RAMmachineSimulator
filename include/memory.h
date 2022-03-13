@@ -21,6 +21,10 @@ struct Memory {
   std::vector<int> registers;
   std::fstream input;
   std::fstream output;
+  std::vector<std::string> str_input;
+  std::vector<std::string> str_output;
+  int input_head = 0;
+  int output_head = 0;
 };
 
 

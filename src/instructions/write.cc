@@ -15,6 +15,8 @@ void WriteInstruction::execute(Memory& mem) const {
   switch (mode) {
   case Mode::inmediate:
     mem.output << operand << "\n";
+    mem.str_output.push_back(std::to_string(operand));
+    
     break;
   case Mode::direct:
     if ((size_t)operand >= mem.registers.size()) {
@@ -24,13 +26,16 @@ void WriteInstruction::execute(Memory& mem) const {
       throw InvalidWrite(to_string());
     }
     mem.output << mem.registers[operand] << "\n";
+    mem.str_output.push_back(std::to_string(mem.registers[operand]));
     break;
   case Mode::indirect:
     mem.output << mem.registers[mem.registers[operand]] << "\n";
+    mem.str_output.push_back(std::to_string(mem.registers[mem.registers[operand]]));
     break;
   default:
     throw InvalidMode(to_string());
   }
+  mem.output_head += 1;
   mem.program_counter += 1;
 }
 

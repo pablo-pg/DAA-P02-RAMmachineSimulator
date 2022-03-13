@@ -12,10 +12,11 @@
 #ifndef RAM_GENERATOR_H_
 #define RAM_GENERATOR_H_
 
-#include <iostream>
 #include <algorithm>
 #include <cctype>
 #include <fstream>
+#include <iostream>
+#include <sstream>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -88,13 +89,11 @@ class DebugNoSet: public std::exception {
   const char* what() const noexcept;
 };
 
-// using lines_vec = std::vector<std::string>;
-// using labels = std::unordered_map<std::string, int>;
 
 class RAMBuilder {
  public:
   RAMBuilder();
-  RAM* build();
+  RAM* build(std::vector<std::string> str_input);
   void read_instructions_from(std::fstream& input);
   void set_input_stream(std::fstream& input);
   void set_output_stream(std::fstream& input);
@@ -110,6 +109,8 @@ class RAMBuilder {
   std::vector<Instruction*> instructions;
   std::fstream input;
   std::fstream output;
+  std::vector<std::string> ssinput;
+  std::vector<std::string> ssoutput;
 };
 
 #endif  // RAM_GENERATOR_H_

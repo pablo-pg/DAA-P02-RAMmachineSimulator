@@ -41,6 +41,7 @@ void ReadInstruction::execute(Memory& mem) const {
   default:
     throw InvalidMode(to_string());
   }
+  mem.input_head += 1;
   mem.program_counter += 1;
 }
 
